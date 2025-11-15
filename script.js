@@ -1,9 +1,18 @@
-// Basic interactions: year, theme toggle, simple nav smooth scroll
+/* ==========================
+   script.js
+   Full interactivity: theme toggle, modal system,
+   mobile optimizations, and image navigation
+============================== */
+
 document.addEventListener('DOMContentLoaded', () => {
-  // year
+  // ==========================
+  // YEAR AUTO-UPDATE
+  // ==========================
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // theme toggle
+  // ==========================
+  // THEME TOGGLE
+  // ==========================
   const toggle = document.getElementById('themeToggle');
   const preferred = localStorage.getItem('theme');
   if (preferred === 'dark') document.body.classList.add('dark');
@@ -11,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    localStorage.setItem(
+      'theme',
+      document.body.classList.contains('dark') ? 'dark' : 'light'
+    );
     updateToggle();
   });
 
@@ -19,15 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
   }
 
-  // smooth scroll for internal links
+  // ==========================
+  // SMOOTH SCROLL
+  // ==========================
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, { passive: true });
   });
 
-  // Projects modal logic
+  // ==========================
+  // PROJECTS MODAL
+  // ==========================
   const projects = Array.from(document.querySelectorAll('.project'));
   const modal = document.getElementById('projectModal');
   const modalTitle = document.getElementById('modalTitle');
@@ -44,54 +63,63 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentImages = [];
   let currentImageIndex = 0;
 
+  // OPEN MODAL
   function openModal(index) {
     const p = projects[index];
     if (!p) return;
-    currentIndex = index;
-    const title = p.dataset.title || '';
-    const desc = p.dataset.desc || '';
-    const tech = p.dataset.tech || '';
-    const image = p.dataset.image || '';
-    try { currentImages = JSON.parse(p.dataset.images || '[]'); } catch { currentImages = image ? [image] : []; }
-    if (currentImages.length === 0 && image) currentImages = [image];
 
-    modalTitle.textContent = title;
-    modalDesc.textContent = desc;
-    modalTech.textContent = tech;
-    modalRepo.href = p.dataset.repo || '#';
+    currentIndex = index;
+    modalTitle.textContent = p.dataset.title;
+    modalDesc.textContent = p.dataset.desc;
+    modalTech.textContent = p.dataset.tech;
+
     modalLive.href = p.dataset.live || '#';
+    modalRepo.href = p.dataset.repo || '#';
+
+    try {
+      currentImages = JSON.parse(p.dataset.images || '[]');
+    } catch {
+      currentImages = p.dataset.image ? [p.dataset.image] : [];
+    }
+    if (currentImages.length === 0 && p.dataset.image) {
+      currentImages = [p.dataset.image];
+    }
 
     currentImageIndex = 0;
     updateModalImage();
 
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
-    // focus management
+    document.body.style.overflow = 'hidden';
+
+    // Focus first element for accessibility
     const firstFocusable = modal.querySelector('button, a');
     if (firstFocusable) firstFocusable.focus();
   }
 
+  // UPDATE MODAL IMAGE
   function updateModalImage() {
     if (!currentImages || currentImages.length === 0) {
-      modalImage.src = '';
-      modalImage.alt = '';
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
+      modalImage.removeAttribute('src');
       return;
     }
-    modalImage.src = currentImages[currentImageIndex];
-    modalImage.alt = modalTitle.textContent + ' - image ' + (currentImageIndex + 1);
-    prevBtn.style.display = (currentImages.length > 1) ? 'inline-block' : 'none';
-    nextBtn.style.display = (currentImages.length > 1) ? 'inline-block' : 'none';
+
+    const src = currentImages[currentImageIndex];
+    modalImage.dataset.src = src;
+    modalImage.src = src;
+    modalImage.alt = modalTitle.textContent + ' - Image ' + (currentImageIndex + 1);
+
+    prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+    nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
   }
 
+  // CLOSE MODAL
   function closeModal() {
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentIndex = -1;
   }
 
-  // Click handlers to open modal
+  // OPEN MODAL VIA CLICK or ENTER
   projects.forEach((p, idx) => {
     p.addEventListener('click', () => openModal(idx));
     p.addEventListener('keydown', (e) => {
@@ -102,25 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Prev/Next image
-  prevBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  // IMAGE NAVIGATION
+  prevBtn.addEventListener('click', () => {
     if (currentImages.length <= 1) return;
     currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
     updateModalImage();
   });
 
-  nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  nextBtn.addEventListener('click', () => {
     if (currentImages.length <= 1) return;
     currentImageIndex = (currentImageIndex + 1) % currentImages.length;
     updateModalImage();
   });
 
-  // Close buttons and overlay
+  // CLOSE BUTTONS
   closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
 
-  // Keyboard support
+  // CLICK OVERLAY TO CLOSE
+  modal.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) closeModal();
+  });
+
+  // KEYBOARD SUPPORT
   document.addEventListener('keydown', (e) => {
     if (modal.getAttribute('aria-hidden') === 'false') {
       if (e.key === 'Escape') closeModal();
@@ -129,19 +160,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Click outside panel to close
-  modal.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-overlay')) closeModal();
+  // PRELOAD A FEW IMAGES (IDLE)
+  onIdle(() => {
+    projects.slice(0, 2).forEach(p => {
+      try {
+        const imgs = JSON.parse(p.dataset.images || '[]');
+        (imgs.length ? imgs : [p.dataset.image]).forEach(src => {
+          const img = new Image();
+          img.src = src;
+        });
+      } catch {}
+    });
   });
 
-  // Preload images (optional)
-  projects.forEach(p => {
-    try {
-      const imgs = JSON.parse(p.dataset.images || '[]');
-      (imgs.length ? imgs : (p.dataset.image ? [p.dataset.image] : [])).forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    } catch {}
-  });
+  // ==========================
+  // UTILS
+  // ==========================
+  function onIdle(fn) {
+    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 200 });
+    else setTimeout(fn, 200);
+  }
+
 });

@@ -1,152 +1,104 @@
+<!-- ==========================
+   index.html
+   Full mobile-optimized portfolio website
+   Linked with script.js and stylesheet.css
+============================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GOPI — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gopi — Portfolio</title>
+  <link rel="stylesheet" href="stylesheet.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-row">
       <div class="brand">
-        <h1>GOPI</h1>
+        <h1>Gopi</h1>
         <p class="tag">Web Developer • AI Enthusiast</p>
       </div>
-
       <div class="header-controls">
         <nav class="nav">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
-
-        <button id="themeToggle" class="btn small" aria-label="Toggle theme">🌙</button>
+        <button id="themeToggle" class="btn small" aria-label="Toggle Dark Mode">🌙</button>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero" id="home">
-      <h2>Hello — I'm GOPI</h2>
-      <p class="hero-sub">I build simple, maintainable web apps and experiment with small ML projects.</p>
+      <h2>Hello — I'm Gopi</h2>
+      <p class="hero-sub">I build simple, clean websites and explore AI projects.</p>
       <div class="hero-actions">
-        <a class="btn" href="#projects">See projects</a>
+        <a class="btn" href="#projects">See Projects</a>
         <a class="btn outline" href="mailto:gopi@example.com">Contact</a>
       </div>
     </section>
 
     <section id="about" class="card">
-      <h3>About</h3>
-      <p>I focus on practical projects that teach something new. I like clear code, short documentation, and automating repetitive tasks.</p>
+      <h3>About Me</h3>
+      <p>I focus on practical web development — simple designs, clean code, and performance-first websites.</p>
     </section>
 
-    <!-- Projects section (updated) -->
     <section id="projects" class="card">
       <h3>Projects</h3>
-
       <div class="project-list" id="projectList">
-        <!-- Each project card includes data attributes used by the modal -->
+
         <article class="project" tabindex="0"
                  data-title="Personal Portfolio"
-                 data-desc="Responsive portfolio built with plain HTML/CSS/JS. Includes dark mode and smooth scrolling."
+                 data-desc="A clean and responsive portfolio built with HTML, CSS, and JS. Includes dark mode, smooth scrolling, and modal project preview."
                  data-tech="HTML, CSS, JavaScript"
                  data-image="images/project-portfolio.png"
-                 data-images='["images/project-portfolio.png","images/project-portfolio-2.png"]'
-                 data-repo="https://github.com/your/repo-portfolio"
-                 data-live="">
+                 data-images='["images/project-portfolio.png", "images/project-portfolio-2.png"]'
+                 data-live=""
+                 data-repo="">
           <h4>Personal Portfolio</h4>
-          <p class="short">A responsive portfolio. This page is an example.</p>
-          <div class="meta">
-            <span class="tag-pill">HTML</span>
-            <span class="tag-pill">CSS</span>
-            <span class="tag-pill">JavaScript</span>
-          </div>
+          <p class="short">Responsive website with modal project previews.</p>
         </article>
 
         <article class="project" tabindex="0"
                  data-title="Calculator"
-                 data-desc="Small calculator app to practice DOM and event handling. Supports keyboard input."
+                 data-desc="A simple calculator app built using JavaScript and DOM manipulation."
                  data-tech="JavaScript, DOM"
                  data-image="images/project-calculator.png"
-                 data-images='["images/project-calculator.png"]'
-                 data-repo=""
-                 data-live="">
+                 data-images='["images/project-calculator.png"]'>
           <h4>Calculator</h4>
-          <p class="short">Practice DOM and event handling with a small calculator app.</p>
-          <div class="meta">
-            <span class="tag-pill">JS</span>
-            <span class="tag-pill">DOM</span>
-          </div>
+          <p class="short">Basic JS calculator.</p>
         </article>
 
         <article class="project" tabindex="0"
                  data-title="Weather App"
-                 data-desc="Fetches weather using a public API and displays temperature and conditions. Includes error handling."
-                 data-tech="JavaScript, Fetch API"
-                 data-image=""
-                 data-images='["images/project-weather.png","images/project-weather-2.png"]'
-                 data-repo=""
-                 data-live="">
+                 data-desc="Fetches real-time weather conditions using a free API."
+                 data-tech="JavaScript, API"
+                 data-image="images/project-weather.png"
+                 data-images='["images/project-weather.png", "images/project-weather-2.png"]'>
           <h4>Weather App</h4>
-          <p class="short">Displays current weather using a public API.</p>
-          <div class="meta">
-            <span class="tag-pill">API</span>
-            <span class="tag-pill">JS</span>
-          </div>
+          <p class="short">Uses fetch() and displays weather data.</p>
         </article>
-
-        <!-- New Project Details-->
-        <article class="project" tabindex="0"  
-                 data-title="Chat Application Sockets"
-                 data-desc="Simple console based chat application for windows"
-                 data-tech="C++,Libraries like winsock ,thread,time etc."
-                 data-image="images/chat_img.avif"
-                 data-images='["images/01.png","images/02.png","images/03.png","images/04.png"]'
-                 data-repo="https://github.com/ursGill/ser_cli/tree/main"
-                 data-live="">
-          <h4>Chat Application</h4>
-          <p class="short">A responsive portfolio. This page is an example.</p>
-          <div class="meta">
-            <span class="tag-pill">HTML</span>
-            <span class="tag-pill">CSS</span>
-            <span class="tag-pill">JavaScript</span>
-          </div>
-        </article>
-
-        <!-- Add more project cards here following the same structure -->
-      </div>
-    </section>
-
-    <section id="skills" class="card">
-      <h3>Skills</h3>
-      <div class="skills">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Responsive Design</span>
-        <span>Git & GitHub</span>
       </div>
     </section>
 
     <section id="contact" class="card">
       <h3>Contact</h3>
       <p>Email: <strong>gopi@example.com</strong></p>
-      <a class="btn" href="mailto:gopi@example.com">Send an email</a>
+      <a class="btn" href="mailto:gopi@example.com">Send Email</a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="yr"></span> GOPI — Built with HTML, CSS, JS</small>
-    </div>
+    <small>© <span id="yr"></span> Gopi — Built with HTML, CSS, JS</small>
   </footer>
 
-  <!-- Modal for project details -->
-  <div id="projectModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+
+  <!-- Modal -->
+  <div id="projectModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-overlay" data-close></div>
-    <div class="modal-panel" role="document">
-      <button class="modal-close" aria-label="Close" data-close>&times;</button>
+    <div class="modal-panel">
+      <button class="modal-close" data-close>&times;</button>
 
       <div class="modal-content">
         <div class="modal-left">
@@ -158,15 +110,13 @@
             </div>
           </div>
         </div>
-
         <div class="modal-right">
           <h3 id="modalTitle"></h3>
           <p id="modalDesc"></p>
           <p><strong>Tech:</strong> <span id="modalTech"></span></p>
-
           <div class="modal-actions">
-            <a id="modalLive" class="btn" href="#" target="_blank" rel="noreferrer">Live</a>
-            <a id="modalRepo" class="btn outline" href="#" target="_blank" rel="noreferrer">Repo</a>
+            <a id="modalLive" class="btn" href="#" target="_blank">Live</a>
+            <a id="modalRepo" class="btn outline" href="#" target="_blank">Repo</a>
           </div>
         </div>
       </div>

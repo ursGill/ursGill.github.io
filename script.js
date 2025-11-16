@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // GitHub repos widget
 // ---------------------
 (function setupGitHubRepos(){
-  const username = 'YOUR_GITHUB_USERNAME'; // <<< replace this
+  const username = 'ursGill'; // <<< replace this
   const listEl = document.getElementById('reposList');
   const errorEl = document.getElementById('reposError');
   const filterInput = document.getElementById('repoFilter');

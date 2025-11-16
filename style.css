@@ -95,6 +95,37 @@ body{
 .project h4{margin-bottom:6px}
 .short{color:var(--muted);font-size:14px}
 
+/* GitHub repos grid */
+.repo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+@media(min-width:720px){
+  .repo-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.repo-card {
+  background:var(--card);
+  border:1px solid rgba(0,0,0,0.06);
+  padding:14px;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.repo-card:hover { transform:translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+
+.repo-title { font-weight:600; display:flex; justify-content:space-between; gap:8px; align-items:center; }
+.repo-desc { color:var(--muted); font-size:14px; min-height:36px; }
+.repo-meta { display:flex; gap:8px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+.repo-meta .pill { background:#f1f5ff; padding:6px 8px; border-radius:16px; color:#1f3aa6; font-size:12px; }
+.repo-links { margin-top:auto; display:flex; gap:8px; align-items:center; }
+.repo-links a { text-decoration:none; font-size:14px; }
+
+
 /* Modal */
 .modal{
   position:fixed;

@@ -95,6 +95,22 @@
       </div>
     </section>
 
+     <section id="repos" class="card">
+  <h3>GitHub Repositories</h3>
+
+  <div id="reposControls" style="margin-bottom:12px;">
+    <input id="repoFilter" type="search" placeholder="Filter repos by name or language" style="padding:8px;border-radius:6px;border:1px solid #ddd;"/>
+    <button id="refreshRepos" class="btn small" style="margin-left:8px;">Refresh</button>
+  </div>
+
+  <div id="reposList" class="repo-grid">
+    <!-- repos will be rendered here -->
+  </div>
+
+  <div id="reposError" style="color:#c33; margin-top:12px; display:none;"></div>
+</section>
+
+
     <section id="contact" class="card">
       <h3>Contact</h3>
       <p>Email: <strong>gopi@example.com</strong></p>

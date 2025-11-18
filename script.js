@@ -1,8 +1,4 @@
-/* ==========================
-   script.js
-   Full interactivity: theme toggle, modal system,
-   mobile optimizations, and image navigation
-============================== */
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // ==========================

@@ -286,6 +286,51 @@ body {
   max-width: 100%;
 }
 
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-actions .btn {
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px; /* ensures equal height */
+}
+
+/* ==========================
+   Modal Close Button
+========================== */
+
+.modal-close {
+  position: absolute;
+  top: 200px;
+  right: 16px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.modal-close:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
+body.light .modal-close:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+
 /* ==========================
    Resume Link
 ========================== */

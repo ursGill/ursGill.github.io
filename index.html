@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,156 +13,156 @@
 
   <!-- CSS (non-blocking) -->
   <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="style.css">
+  </noscript>
 </head>
 
 <body class="dark">
 
-<header class="site-header">
-  <div class="container header-row">
+  <header class="site-header">
+    <div class="container header-row">
 
-    <div class="brand">
-      <h1>GOPI</h1>
+      <div class="brand">
+        <h1>GOPI</h1>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="nav desktop-nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a id="resumeDownload" href="resume.html" class="resume-link">Resume</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Desktop theme toggle -->
+        <button id="themeToggle" class="icon-btn desktop-only" aria-label="Toggle theme">☀️</button>
+
+        <!-- Mobile menu toggle -->
+        <button id="menuToggle" class="icon-btn mobile-only" aria-label="Open menu" aria-expanded="false">
+          ☰
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- Desktop Nav -->
-    <nav class="nav desktop-nav">
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a id="resumeDownload" href="resume.html" class="resume-link" >Resume</a>
-    </nav>
+  <!-- Mobile Menu -->
+  <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.html">Resume</a>
+    <!-- Mobile theme toggle -->
+    <button id="mobileThemeToggle" class="mobile-theme-toggle" aria-label="Toggle theme">Toggle Theme
 
-    <div class="header-actions">
-      <!-- Desktop theme toggle -->
-      <button id="themeToggle" class="icon-btn desktop-only" aria-label="Toggle theme">☀️</button>
-
-      <!-- Mobile menu toggle -->
-      <button
-        id="menuToggle"
-        class="icon-btn mobile-only"
-        aria-label="Open menu"
-        aria-expanded="false">
-        ☰
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile Menu -->
-<nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
-  <a href="#projects">Projects</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="resume.html" >Resume</a>
-  <!-- Mobile theme toggle -->
-   <button id="mobileThemeToggle" class="mobile-theme-toggle" aria-label="Toggle theme">Toggle Theme
-
-   </button>
-</nav>
+    </button>
+  </nav>
 
 
-<main class="container">
+  <main class="container">
 
-<section class="hero">
-  <h2>I build with clarity,<br>structure, and intent.</h2>
-  <p class="hero-sub">Focused on simple, reliable, performance-first solutions.</p>
-  <a class="btn" href="#projects">View Projects</a>
-</section>
+    <section class="hero">
+      <h2>I build with clarity,<br>structure, and intent.</h2>
+      <p class="hero-sub">Focused on simple, reliable, performance-first solutions.</p>
+      <a class="btn" href="#projects">View Projects</a>
+    </section>
 
-<section id="projects" class="section">
-  <h3>Selected Projects</h3>
+    <section id="projects" class="section">
+      <h3>Selected Projects</h3>
 
-  <div class="project-list">
+      <div class="project-list">
 
-    <article class="project" tabindex="0"
-      data-title="Personal Portfolio"
-      data-desc="Minimalist portfolio with performance-first approach."
-      data-tech="HTML, CSS, JavaScript"
-      data-images='["images/portfolio01.png","images/portfolio02.png"]'
-      data-live="https://ursgill.github.io/"
-      data-repo="https://github.com/ursGill/ursGill.github.io">
-      <h4>Personal Portfolio</h4>
-      <p class="short">Clean layout and fast UX.</p>
-    </article>
+        <article class="project" tabindex="0" data-title="Personal Portfolio"
+          data-desc="Minimalist portfolio with performance-first approach." data-tech="HTML, CSS, JavaScript"
+          data-images='["images/portfolio01.png","images/portfolio02.png"]' data-live="https://ursgill.github.io/"
+          data-repo="https://github.com/ursGill/ursGill.github.io">
+          <h4>Personal Portfolio</h4>
+          <p class="short">Clean layout and fast UX.</p>
+        </article>
 
-    <article class="project" tabindex="0"
-      data-title="Calculator"
-      data-desc="JavaScript calculator focused on logic clarity."
-      data-tech="JavaScript"
-      data-images='["images/calc01.png"]'
-      data-live="https://ursgill.github.io/calc/"
-      data-repo="https://github.com/ursGill/calc">
-      <h4>Calculator</h4>
-      <p class="short">DOM & state handling.</p>
-    </article>
+        <article class="project" tabindex="0" data-title="Calculator"
+          data-desc="JavaScript calculator focused on logic clarity." data-tech="JavaScript"
+          data-images='["images/calc01.png"]' data-live="https://ursgill.github.io/calc/"
+          data-repo="https://github.com/ursGill/calc">
+          <h4>Calculator</h4>
+          <p class="short">DOM & state handling.</p>
+        </article>
 
-  </div>
-</section>
+        <article class="project" tabindex="0" data-title="My App" data-desc="Description…" data-tech="Flutter, Firebase"
+          data-images='' data-live="" data-repo="https://github.com/ursGill/Attend_Cllg_android_app"
+          data-download="https://github.com/ursGill/Attend_Cllg_android_app/releases/download/v1.0.0/attend_cllg.apk">
+          <h4>Attendance App</h4>
+          <p class="short">Calculate & Manage Attendance Easily</p>
+        </article>
 
-<section id="about" class="section">
-  <h3>About</h3>
-  <p>I focus on understanding problems deeply and building predictable, maintainable solutions.</p>
-</section>
+      </div>
+    </section>
 
-<section id="repos" class="section muted">
-  <h3>GitHub Repositories</h3>
-  <div id="reposList" class="repo-grid"></div>
-  <div id="reposFallback" class="repos-fallback" hidden>
-  <p>Unable to load repositories right now.</p>
-  <a
-    href="https://github.com/ursGill"
-    target="_blank"
-    rel="noopener"
-    class="btn outline"
-  >
-    View GitHub Profile
-  </a>
-</div>
+    <section id="about" class="section">
+      <h3>About</h3>
+      <p>I focus on understanding problems deeply and building predictable, maintainable solutions.</p>
+    </section>
 
-</section>
+    <section id="repos" class="section muted">
+      <h3>GitHub Repositories</h3>
+      <div id="reposList" class="repo-grid"></div>
+      <div id="reposFallback" class="repos-fallback" hidden>
+        <p>Unable to load repositories right now.</p>
+        <a href="https://github.com/ursGill" target="_blank" rel="noopener" class="btn outline">
+          View GitHub Profile
+        </a>
+      </div>
 
-<section id="contact" class="section">
-  <!-- <h3>Contact</h3> -->
-  <a class="btn secondary" href="mailto:gopi@gmail.com">
-  Contact
-</a>
+    </section>
 
-  
-</section>
+    <section id="contact" class="section">
+      <!-- <h3>Contact</h3> -->
+      <a class="btn secondary" href="mailto:gopi@gmail.com">
+        Contact
+      </a>
 
-</main>
 
-<footer class="site-footer">
-  © <span id="yr"></span> GOPI
-</footer>
+    </section>
 
-<!-- MODAL -->
-<div id="projectModal" class="modal" aria-hidden="true">
-  <div class="modal-overlay" data-close></div>
-  <div class="modal-panel">
-    <button class="modal-close" data-close>&times;</button>
-    <div class="modal-content">
-      <div class="modal-left">
-        <img id="modalImage" />
-        <div class="modal-image-controls">
-          <button id="prevImage">◀</button>
-          <button id="nextImage">▶</button>
+  </main>
+
+  <footer class="site-footer">
+    © <span id="yr"></span> GOPI
+  </footer>
+
+  <!-- MODAL -->
+  <div id="projectModal" class="modal" aria-hidden="true">
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close>  ✕
+</button>
+      <div class="modal-content">
+        <div class="modal-left">
+          <img id="modalImage" alt="" />
+          <div class="modal-image-controls">
+            <button id="prevImage">◀</button>
+            <button id="nextImage">▶</button>
+          </div>
+        </div>
+        <div class="modal-right">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+          <p><strong>Tech:</strong> <span id="modalTech"></span></p>
+
+
+          <a id="modalLive" class="btn" target="_blank">Live</a>
+          <a id="modalRepo" class="btn outline" target="_blank">Repo</a>
+          <a id="modalDownload" class="btn" target="_blank" rel="noopener">
+            App
+          </a>
+
         </div>
       </div>
-      <div class="modal-right">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <p><strong>Tech:</strong> <span id="modalTech"></span></p>
-      
-
-        <a id="modalLive" class="btn" target="_blank">Live</a>
-        <a id="modalRepo" class="btn outline" target="_blank">Repo</a>
-      </div>
     </div>
   </div>
-</div>
 
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
+
 </html>

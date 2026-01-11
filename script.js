@@ -66,9 +66,11 @@ if (menuToggle && mobileMenu) {
 /* ==========================
    PROJECT MODAL
 ========================== */
+
 const projects = document.querySelectorAll(".project");
 const modal = document.getElementById("projectModal");
 const modalPanel = modal?.querySelector(".modal-panel");
+const modalLeft = modal?.querySelector(".modal-left");
 const modalImage = document.getElementById("modalImage");
 
 let images = [];
@@ -88,16 +90,55 @@ function openModal(p) {
   images = JSON.parse(p.dataset.images || "[]");
   index = 0;
 
+  const modalLive = document.getElementById("modalLive");
+  const modalRepo = document.getElementById("modalRepo");
+  const modalDownload = document.getElementById("modalDownload");
+
   document.getElementById("modalTitle").textContent = p.dataset.title || "";
   document.getElementById("modalDesc").textContent = p.dataset.desc || "";
   document.getElementById("modalTech").textContent = p.dataset.tech || "";
-  document.getElementById("modalLive").href = p.dataset.live || "#";
-  document.getElementById("modalRepo").href = p.dataset.repo || "#";
+
+  /* ---------- IMAGE SECTION ---------- */
+  if (images.length > 0) {
+    modalLeft.style.display = "block";
+    modal.classList.remove("no-image");
+    modalImage.src = images[0];
+  } else {
+    modalLeft.style.display = "none";
+    modal.classList.add("no-image");
+  }
+
+  
+
+  /* ---------- LIVE ---------- */
+  if (p.dataset.live?.trim()) {
+    modalLive.href = p.dataset.live;
+    modalLive.style.display = "inline-flex";
+  } else {
+    modalLive.style.display = "none";
+  }
+
+  /* ---------- REPO ---------- */
+  if (p.dataset.repo?.trim()) {
+    modalRepo.href = p.dataset.repo;
+    modalRepo.style.display = "inline-flex";
+  } else {
+    modalRepo.style.display = "none";
+  }
+
+  /* ---------- DOWNLOAD ---------- */
+  if (p.dataset.download?.trim()) {
+    modalDownload.href = p.dataset.download;
+    modalDownload.style.display = "inline-flex";
+  } else {
+    modalDownload.style.display = "none";
+  }
 
   updateImg();
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
+
 
 function closeModal() {
   modal.setAttribute("aria-hidden", "true");

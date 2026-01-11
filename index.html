@@ -1,158 +1,167 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>GOPI — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio of GOPI — clean, structured web development and problem-solving." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- CSS (non-blocking) -->
+  <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-row">
-      <div class="brand">
-        <h1>GOPI</h1>
-        <p class="tag">Web Developer • AI Enthusiast</p>
-      </div>
-      <div class="header-controls">
-        <nav class="nav">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a href="#repos">Repos</a>
 
-        </nav>
-        <button id="themeToggle" class="btn small" aria-label="Toggle Dark Mode">🌙</button>
-      </div>
+<body class="dark">
+
+<header class="site-header">
+  <div class="container header-row">
+
+    <div class="brand">
+      <h1>GOPI</h1>
     </div>
-  </header>
 
-  <main class="container">
-    <section class="hero" id="home">
-      <h2>Hello — I'm GOPI</h2>
-      <p class="hero-sub">I build simple, clean websites and explore AI projects.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#projects">See Projects</a>
-        <a class="btn outline" href="mailto:gopi@gmail.com">Contact</a>
-      </div>
-    </section>
+    <!-- Desktop Nav -->
+    <nav class="nav desktop-nav">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a id="resumeDownload" href="resume.html" class="resume-link" >Resume</a>
+    </nav>
 
-    <section id="about" class="card">
-      <h3>About Me</h3>
-      <p>I focus on practical web development — simple designs, clean code, and performance-first websites.</p>
-    </section>
+    <div class="header-actions">
+      <!-- Desktop theme toggle -->
+      <button id="themeToggle" class="icon-btn desktop-only" aria-label="Toggle theme">☀️</button>
 
-    <section id="projects" class="card">
-      <h3>Projects</h3>
-      <div class="project-list" id="projectList">
-
-        <article class="project" tabindex="0"
-                 data-title="Personal Portfolio"
-                 data-desc="A clean and responsive portfolio built with HTML, CSS, and JS. Includes dark mode, smooth scrolling, and modal project preview."
-                 data-tech="HTML, CSS, JavaScript"
-                 data-image="images/project-portfolio.png"
-                 data-images='["images/portfolio01.png", "images/portfolio02.png"]'
-                 data-live="https://ursgill.github.io/"
-                 data-repo="https://github.com/ursGill/ursGill.github.io">
-          <h4>Personal Portfolio</h4>
-          <p class="short">Responsive website with modal project previews.</p>
-        </article>
-
-        <article class="project" tabindex="0"
-                 data-title="Calculator"
-                 data-desc="A simple calculator app built using JavaScript and DOM manipulation."
-                 data-tech="JavaScript, DOM"
-                 data-image="images/project-calculator.png"
-                 data-images='["images/calc01.png"]'  
-                 data-repo="https://github.com/ursGill/calc"
-                 data-live="https://ursgill.github.io/calc/">
-          <h4>Calculator</h4>
-          <p class="short">Basic JS calculator.</p>
-        </article>
-
-        <article class="project" tabindex="0"
-                 data-title="Weather App"
-                 data-desc="Fetches real-time weather conditions using a free API."
-                 data-tech="JavaScript, API"
-                 data-image="images/weather01.png"
-                 data-repo="https://github.com/ursgill/weather/"
-                 data-live="https://ursgill.github.io/weather/">
-          <h4>Weather App</h4>
-          <p class="short">Uses fetch() and displays weather data.</p>
-        </article>
-
-        <!-- New Project -->
-         <article class="project" tabindex="0"
-                 data-title="Chat Application Sockets"
-                 data-desc="simple console based chat application  "
-                 data-tech="C++,libraries like winsock , time,thread etc."
-                 data-image="images/project-portfolio.png"
-                 data-images='["images/01.png", "images/02.png","images/03.png","images/04.png"]'
-                 data-live=""
-                 data-repo="https://github.com/ursGill/ser_cli">
-          <h4>Chat Application</h4>
-          <p class="short">Simple Chat Application with private/Broadcast message feature on LAN</p>
-        </article>
-      </div>
-    </section>
-
-     <section id="repos" class="card">
-  <h3>GitHub Repositories</h3>
-
-  <div id="reposControls" style="margin-bottom:12px;">
-    <input id="repoFilter" type="search" placeholder="Filter repos by name or language" style="padding:8px;border-radius:6px;border:1px solid #ddd;"/>
-    <button id="refreshRepos" class="btn small" style="margin-left:8px;">Refresh</button>
+      <!-- Mobile menu toggle -->
+      <button
+        id="menuToggle"
+        class="icon-btn mobile-only"
+        aria-label="Open menu"
+        aria-expanded="false">
+        ☰
+      </button>
+    </div>
   </div>
+</header>
 
-  <div id="reposList" class="repo-grid">
-    <!-- repos will be rendered here -->
-  </div>
+<!-- Mobile Menu -->
+<nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+  <a href="#projects">Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="resume.html" >Resume</a>
+  <!-- Mobile theme toggle -->
+   <button id="mobileThemeToggle" class="mobile-theme-toggle" aria-label="Toggle theme">Toggle Theme
 
-  <div id="reposError" style="color:#c33; margin-top:12px; display:none;"></div>
+   </button>
+</nav>
+
+
+<main class="container">
+
+<section class="hero">
+  <h2>I build with clarity,<br>structure, and intent.</h2>
+  <p class="hero-sub">Focused on simple, reliable, performance-first solutions.</p>
+  <a class="btn" href="#projects">View Projects</a>
 </section>
 
+<section id="projects" class="section">
+  <h3>Selected Projects</h3>
 
-    <section id="contact" class="card">
-      <h3>Contact</h3>
-      <p>Email: <strong>gopi@gmail.com</strong></p>
-      <a class="btn" href="mailto:gopi@gmail.com">Send Email</a>
-    </section>
-  </main>
+  <div class="project-list">
 
-  <footer class="site-footer">
-    <small>© <span id="yr"></span> GOPI — Built with HTML, CSS, JS</small>
-  </footer>
+    <article class="project" tabindex="0"
+      data-title="Personal Portfolio"
+      data-desc="Minimalist portfolio with performance-first approach."
+      data-tech="HTML, CSS, JavaScript"
+      data-images='["images/portfolio01.png","images/portfolio02.png"]'
+      data-live="https://ursgill.github.io/"
+      data-repo="https://github.com/ursGill/ursGill.github.io">
+      <h4>Personal Portfolio</h4>
+      <p class="short">Clean layout and fast UX.</p>
+    </article>
 
+    <article class="project" tabindex="0"
+      data-title="Calculator"
+      data-desc="JavaScript calculator focused on logic clarity."
+      data-tech="JavaScript"
+      data-images='["images/calc01.png"]'
+      data-live="https://ursgill.github.io/calc/"
+      data-repo="https://github.com/ursGill/calc">
+      <h4>Calculator</h4>
+      <p class="short">DOM & state handling.</p>
+    </article>
 
-  <!-- Modal -->
-  <div id="projectModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-overlay" data-close></div>
-    <div class="modal-panel">
-      <button class="modal-close" data-close>&times;</button>
+  </div>
+</section>
 
-      <div class="modal-content">
-        <div class="modal-left">
-          <div class="modal-image-wrap">
-            <img id="modalImage" src="" alt="" />
-            <div class="modal-image-controls">
-              <button id="prevImage" class="small">◀</button>
-              <button id="nextImage" class="small">▶</button>
-            </div>
-          </div>
+<section id="about" class="section">
+  <h3>About</h3>
+  <p>I focus on understanding problems deeply and building predictable, maintainable solutions.</p>
+</section>
+
+<section id="repos" class="section muted">
+  <h3>GitHub Repositories</h3>
+  <div id="reposList" class="repo-grid"></div>
+  <div id="reposFallback" class="repos-fallback" hidden>
+  <p>Unable to load repositories right now.</p>
+  <a
+    href="https://github.com/ursGill"
+    target="_blank"
+    rel="noopener"
+    class="btn outline"
+  >
+    View GitHub Profile
+  </a>
+</div>
+
+</section>
+
+<section id="contact" class="section">
+  <!-- <h3>Contact</h3> -->
+  <a class="btn secondary" href="mailto:gopi@gmail.com">
+  Contact
+</a>
+
+  
+</section>
+
+</main>
+
+<footer class="site-footer">
+  © <span id="yr"></span> GOPI
+</footer>
+
+<!-- MODAL -->
+<div id="projectModal" class="modal" aria-hidden="true">
+  <div class="modal-overlay" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close>&times;</button>
+    <div class="modal-content">
+      <div class="modal-left">
+        <img id="modalImage" />
+        <div class="modal-image-controls">
+          <button id="prevImage">◀</button>
+          <button id="nextImage">▶</button>
         </div>
-        <div class="modal-right">
-          <h3 id="modalTitle"></h3>
-          <p id="modalDesc"></p>
-          <p><strong>Tech:</strong> <span id="modalTech"></span></p>
-          <div class="modal-actions">
-            <a id="modalLive" class="btn" href="#" target="_blank">Live</a>
-            <a id="modalRepo" class="btn outline" href="#" target="_blank">Repo</a>
-          </div>
-        </div>
+      </div>
+      <div class="modal-right">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <p><strong>Tech:</strong> <span id="modalTech"></span></p>
+      
+
+        <a id="modalLive" class="btn" target="_blank">Live</a>
+        <a id="modalRepo" class="btn outline" target="_blank">Repo</a>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>

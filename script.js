@@ -27,7 +27,7 @@ function updateToggleIcon() {
 }
 
 // Initial theme
-applyTheme(localStorage.getItem("theme") || "dark");
+applyTheme(localStorage.getItem("theme") || "light");
 
 // Desktop toggle
 themeToggle?.addEventListener("click", () => {
